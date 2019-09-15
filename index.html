@@ -8,24 +8,27 @@
 </head>
 
 <body>
-    <span>City name: </span>
-    <input id="input" type="text">
-    <button onclick="buttonClick()">Show</button>
+    <div class="container">
 
-    <div id="weather-container"></div>
+        <span>City name: </span>
+        <input id="input" type="text">
+        <button onclick="buttonClick()">Show</button>
 
-    <script id="weather-template" type="text/x-handlebars-template">
-        <h1>Weather in {{city_name}}</h1>
-        <div class="weather-parameters">
+        <div id="weather-container"></div>
+
+        <script id="weather-template" type="text/x-handlebars-template">
+            <h1>Weather in {{city_name}}</h1>
+            <div class="weather-parameters">
             {{#each parameters}}
                 <div class="parameter-name">{{name}}</div>
                 <div class="parameter-value">{{value}} {{{units}}}</div>
-            {{/each}}
-        </div>
-    </script>
+                {{/each}}
+            </div>
+        </script>
 
 
-    <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </div>
 </body>
 
 </html>

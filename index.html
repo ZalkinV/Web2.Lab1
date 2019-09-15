@@ -7,8 +7,12 @@
 </head>
 
 <body>
+    <span>City name: </span>
+    <input id="input" type="text">
+    <button onclick="buttonClick()">Show</button>
+
     <script id="weather-template" type="text/x-handlebars-template">
-        <div class="weather-params">
+        <div>
             <h1>Weather in {{name}}</h1>
             <ul>
                 <li>Temperture: {{main.temp}}</li>

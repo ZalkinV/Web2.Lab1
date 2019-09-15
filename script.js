@@ -13,7 +13,7 @@ function buttonClick()
         if (request.status == 200)
             displayWeather(request.response)
         else
-            document.body.innerHTML += request.statusText;
+            alert(request.response.message);
     }
     request.send();
 }

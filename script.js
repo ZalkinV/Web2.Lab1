@@ -1,9 +1,14 @@
 "use strict"
 
-var source = document.getElementById("entry-template").innerHTML;
-var template = Handlebars.compile(source);
 
 var data = { title: "My New Post", body: "This is my first post!" };
-var html = template(data);
+displayWeather(data);
 
-document.body.innerHTML = html;
+function displayWeather(weatherParams)
+{
+    var source = document.getElementById("entry-template").innerHTML;
+    var template = Handlebars.compile(source);
+    
+    var html = template(weatherParams);
+    document.body.innerHTML += html;
+}

@@ -8,29 +8,29 @@
 </head>
 
 <body>
-    <div class="container">
 
+    <div class="input-container">
         <h1>City name: </h1>
         <input id="input" type="text">
         <button onclick="buttonClick()">Show</button>
-
-        <div id="weather-container"></div>
-
-        <script id="weather-template" type="text/x-handlebars-template">
-            <h1>Weather in {{city_name}} is {{main}}</h1>
-            <div class="weather-parameters">
-            {{#each parameters}}
-                <div class="parameter">
-                    <div class="parameter-name">{{name}}</div>
-                    <div class="parameter-value">{{value}} {{{units}}}</div>
-                </div>
-            {{/each}}
-            </div>
-        </script>
-
-
-        <script type="text/javascript" src="script.js"></script>
     </div>
+
+    <div id="weather-container"></div>
+
+    <script id="weather-template" type="text/x-handlebars-template">
+        <h1>Weather in {{city_name}} is {{main}}</h1>
+        <div class="weather-parameters">
+        {{#each parameters}}
+            <div class="parameter">
+                <div class="parameter-name">{{name}}</div>
+                <div class="parameter-value">{{value}} {{{units}}}</div>
+            </div>
+        {{/each}}
+        </div>
+    </script>
+
+
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>

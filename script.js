@@ -25,5 +25,5 @@ function displayWeather(weatherParams)
     var template = Handlebars.compile(source);
     
     var html = template(weatherParams);
-    document.body.innerHTML += html;
+    document.getElementById("weather-container").innerHTML = html;
 }

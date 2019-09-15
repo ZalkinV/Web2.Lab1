@@ -7,12 +7,16 @@
 </head>
 
 <body>
-    <script id="entry-template" type="text/x-handlebars-template">
-        <div class="entry">
-            <h1>{{title}}</h1>
-            <div class="body">
-                {{body}}
-            </div>
+    <script id="weather-template" type="text/x-handlebars-template">
+        <div class="weather-params">
+            <h1>Weather in {{name}}</h1>
+            <ul>
+                <li>Temperture: {{main.temp}}</li>
+                <li>Pressure: {{main.pressure}}</li>
+                <li>Himidity: {{main.humidity}}</li>
+                <li>Clouds: {{clouds.all}}%</li>
+                <li>Wind speed: {{wind.speed}}</li>
+            </ul>
         </div>
     </script>
 

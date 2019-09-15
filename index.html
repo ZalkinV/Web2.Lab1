@@ -14,10 +14,10 @@
     <div id="weather-container"></div>
 
     <script id="weather-template" type="text/x-handlebars-template">
-        <h1>Weather in {{name}}</h1>
+        <h1>Weather in {{city_name}}</h1>
         {{#each parameters}}
             <div class="parameter-name">{{this.name}}</div>
-            <div class="parameter-value">{{this.value}}</div>
+            <div class="parameter-value">{{this.value}} {{{this.units}}}</div>
         {{/each}}
     </script>
 

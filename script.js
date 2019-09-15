@@ -16,7 +16,7 @@ function buttonClick() {
     request.onload = function () {
         if (request.status == 200)
         {
-            let data = extractData(request.response);
+            let data = extractForecast(request.response);
             displayWeather(data);
         }
         else
@@ -28,27 +28,27 @@ function buttonClick() {
 }
 
 
-function displayWeather(data) {
+function displayWeather(forecast) {
     var source = document.getElementById("weather-template").innerHTML;
     var template = Handlebars.compile(source);
 
-    var html = template(data);
+    var html = template(forecast);
     document.getElementById("weather-container").innerHTML = html;
 }
 
-function extractData(response) {
-   let data =
+function extractForecast(response) {
+   let forecast =
    {
-       "name" : response.name,
+       "city_name" : response.name,
        "parameters" :
        [
-           {"name" : "Temperature", "value" : response.main.temp},
-           {"name" : "Pressure", "value" : response.main.pressure},
-           {"name" : "Humidity", "value" : response.main.humidity},
-           {"name" : "Clouds, %", "value" : response.clouds.all},
-           {"name" : "Wind speed", "value" : response.wind.speed},
+           {"name" : "Temperature", "value" : response.main.temp, "units" : "&deg;C"},
+           {"name" : "Pressure", "value" : response.main.pressure, "units" : "hPa"},
+           {"name" : "Humidity", "value" : response.main.humidity, "units" : "%"},
+           {"name" : "Clouds", "value" : response.clouds.all, "units" : "%"},
+           {"name" : "Wind speed", "value" : response.wind.speed, "units" : "m/s"},
        ],
    };
 
-   return data;
+   return forecast;
 }

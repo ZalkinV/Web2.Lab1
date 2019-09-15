@@ -16,8 +16,8 @@
     <script id="weather-template" type="text/x-handlebars-template">
         <h1>Weather in {{city_name}}</h1>
         {{#each parameters}}
-            <div class="parameter-name">{{this.name}}</div>
-            <div class="parameter-value">{{this.value}} {{{this.units}}}</div>
+            <div class="parameter-name">{{name}}</div>
+            <div class="parameter-value">{{value}} {{{units}}}</div>
         {{/each}}
     </script>
 

@@ -5,8 +5,14 @@ function buttonClick() {
     let cityName = document.getElementById("input").value;
 
     let request = new XMLHttpRequest();
-    request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=7825ce4ffa896c5019e53087c858568a");
+    
+    let requestText = "https://api.openweathermap.org/data/2.5/weather" +
+        "?q=" + cityName +
+        "&appid=7825ce4ffa896c5019e53087c858568a" +
+        "&units=metric";
+    request.open("GET", requestText);
     request.responseType = "json";
+
     request.onload = function () {
         if (request.status == 200)
         {

@@ -1,0 +1,13 @@
+.container {
+    background-color: rgb(243, 174, 72);
+    display: grid;
+}
+
+.weather-parameters {
+    display: flex;
+    justify-content: space-around;
+}
+
+#input {
+    font-size: 2em;
+}

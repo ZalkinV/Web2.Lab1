@@ -1,4 +1,5 @@
 $parameter-margin-bottom : 1.5em;
+$input-font-size : 2em;
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -11,11 +12,15 @@ body {
 }
 
 #input {
-    font-size: 2em;
+    font-size: $input-font-size;
 }
 
 #input-label {
     margin: 0;
+}
+
+#input-button {
+    font-size: $input-font-size;
 }
 
 .weather-parameters {

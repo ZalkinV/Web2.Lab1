@@ -1,0 +1,19 @@
+$input-font-size : 2em;
+
+
+.input-container {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+}
+
+#input {
+    font-size: $input-font-size;
+}
+
+#input-label {
+    margin: 0;
+}
+
+#input-button {
+    font-size: $input-font-size;
+}

@@ -1,0 +1,20 @@
+$parameter-margin-bottom : 1.5em;
+
+
+.weather-parameters {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.parameter {
+    grid-area: "parameter";
+    margin-bottom: $parameter-margin-bottom;
+}
+
+.parameter-name {
+    font-weight: bold;
+    margin-bottom: $parameter-margin-bottom / 3;
+}

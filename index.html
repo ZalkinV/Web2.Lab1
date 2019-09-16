@@ -19,9 +19,11 @@
 
     <script id="weather-template" type="text/x-handlebars-template">
         <h1>Weather in {{city_name}} is {{main}}</h1>
+        <img src={{icon}}>
         <div class="weather-parameters">
         {{#each parameters}}
             <div class="parameter">
+                <img class="parameter-icon" src={{icon}}>
                 <div class="parameter-name">{{name}}</div>
                 <div class="parameter-value">{{value}} {{{units}}}</div>
             </div>

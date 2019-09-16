@@ -36,17 +36,19 @@ function displayWeather(forecast) {
 }
 
 function extractForecast(response) {
+    const iconSize = 64;
     let forecast =
     {
         "city_name": response.name,
         "main": response.weather[0].description,
+        "icon" : "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png",
         "parameters":
             [
-                { "name": "Temperature", "value": response.main.temp, "units": "&deg;C" },
-                { "name": "Pressure", "value": response.main.pressure, "units": "hPa" },
-                { "name": "Humidity", "value": response.main.humidity, "units": "%" },
-                { "name": "Clouds", "value": response.clouds.all, "units": "%" },
-                { "name": "Wind speed", "value": response.wind.speed, "units": "m/s" },
+                { "name": "Temperature", "value": response.main.temp, "units": "&deg;C", "icon" : "https://img.icons8.com/color/" + iconSize + "/000000/thermometer.png" },
+                { "name": "Pressure", "value": response.main.pressure, "units": "hPa", "icon" : "https://img.icons8.com/color/" + iconSize + "/000000/barometer-gauge.png"},
+                { "name": "Humidity", "value": response.main.humidity, "units": "%", "icon" : "https://img.icons8.com/color/" + iconSize + "/000000/hygrometer.png" },
+                { "name": "Clouds", "value": response.clouds.all, "units": "%", "icon" : "https://img.icons8.com/color/" + iconSize + "/000000/clouds.png" },
+                { "name": "Wind speed", "value": response.wind.speed, "units": "m/s", "icon" : "https://img.icons8.com/color/" + iconSize + "/000000/wind.png" },
             ],
     };
 

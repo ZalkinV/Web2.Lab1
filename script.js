@@ -16,6 +16,10 @@ function buttonClick() {
 
     request.onload = function () {
         if (request.status == 200) {
+            let cityName = request.response.name;
+            let imgHref = "http://openweathermap.org/img/wn/" + request.response.weather[0].icon + ".png";
+            updateTab("Weather in " + cityName, imgHref);
+            
             let data = extractForecast(request.response);
             displayWeather(data);
         }
@@ -35,13 +39,17 @@ function displayWeather(forecast) {
     document.getElementById("weather-container").innerHTML = html;
 }
 
+function updateTab(newTitle, newImage) {
+    document.title = newTitle;
+    document.getElementById("favicon").href = newImage;
+}
+
 function extractForecast(response) {
     const iconSize = 64;
     let forecast =
     {
         "city_name": response.name,
         "main": response.weather[0].description,
-        "icon" : "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png",
         "parameters":
             [
                 { "name": "Temperature", "value": response.main.temp, "units": "&deg;C", "icon" : "https://img.icons8.com/color/" + iconSize + "/000000/thermometer.png" },

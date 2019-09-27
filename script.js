@@ -33,23 +33,23 @@ function buttonClick() {
 
 
 function displayWeather(forecast) {
-    var source = document.getElementById("weather-template").innerHTML;
-    var template = Handlebars.compile(source);
+    let source = document.getElementById("weather-template").innerHTML;
+    let template = Handlebars.compile(source);
 
-    var html = template(forecast);
+    let html = template(forecast);
     document.getElementById("error-container").innerHTML = "";
     document.getElementById("weather-container").innerHTML = html;
 }
 
 function displayError(message) {
-    var source = document.getElementById("error-template").innerHTML;
-    var template = Handlebars.compile(source);
+    let source = document.getElementById("error-template").innerHTML;
+    let template = Handlebars.compile(source);
 
     let context =
     {
         message : message
     };
-    var html = template(context);
+    let html = template(context);
 
     document.getElementById("error-container").innerHTML = html;
     document.getElementById("weather-container").innerHTML = "";

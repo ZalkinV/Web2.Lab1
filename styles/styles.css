@@ -40,6 +40,15 @@
   margin-bottom: 0.5em;
 }
 
+#error-container {
+  background-color: red;
+  border-color: black;
+}
+
+.error-message {
+  color: lightgray;
+}
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 5vh 10vw;

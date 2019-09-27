@@ -19,8 +19,12 @@
         </form>
     </div>
 
-    <div id="weather-container"></div>
+    <div id="error-container"></div>
+    <script id="error-template" type="text/x-handlebars-template">
+        <h1 class="error-message">Error: {{message}}</h1>
+    </script>
 
+    <div id="weather-container"></div>
     <script id="weather-template" type="text/x-handlebars-template">
         <h1>Weather in {{city_name}} is {{main}}</h1>
         <img src={{icon}}>

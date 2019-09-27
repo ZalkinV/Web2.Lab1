@@ -24,9 +24,10 @@ function buttonClick() {
             displayWeather(data);
         }
         else {
-            alert(request.response.message);
+            displayError(request.response.message);
         }
     }
+
     request.send();
 }
 
@@ -36,7 +37,22 @@ function displayWeather(forecast) {
     var template = Handlebars.compile(source);
 
     var html = template(forecast);
+    document.getElementById("error-container").innerHTML = "";
     document.getElementById("weather-container").innerHTML = html;
+}
+
+function displayError(message) {
+    var source = document.getElementById("error-template").innerHTML;
+    var template = Handlebars.compile(source);
+
+    let context =
+    {
+        message : message
+    };
+    var html = template(context);
+
+    document.getElementById("error-container").innerHTML = html;
+    document.getElementById("weather-container").innerHTML = "";
 }
 
 function updateTab(newTitle, newImage) {

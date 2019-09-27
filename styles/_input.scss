@@ -2,8 +2,9 @@ $input-font-size : 2em;
 
 
 .input-container {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 #input {

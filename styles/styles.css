@@ -1,8 +1,12 @@
 .input-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr 1fr;
-      grid-template-columns: auto 1fr 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #input {
@@ -28,7 +32,6 @@
 }
 
 .parameter {
-  grid-area: "parameter";
   margin-bottom: 1.5em;
 }
 

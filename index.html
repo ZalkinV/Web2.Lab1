@@ -13,8 +13,10 @@
 
     <div class="input-container">
         <h1 id="input-label">City name: </h1>
-        <input id="input" type="text">
-        <button id="input-button" onclick="buttonClick()">Show</button>
+        <form onsubmit="buttonClick(); return false;">
+            <input id="input" type="text">
+            <input id="input-button" type="submit" value="Show">
+        </form>
     </div>
 
     <div id="weather-container"></div>

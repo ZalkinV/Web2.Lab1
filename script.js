@@ -17,7 +17,7 @@ function buttonClick() {
     request.onload = function () {
         if (request.status == 200) {
             let cityName = request.response.name;
-            let imgHref = "http://openweathermap.org/img/wn/" + request.response.weather[0].icon + ".png";
+            let imgHref = "https://openweathermap.org/img/wn/" + request.response.weather[0].icon + ".png";
             updateTab("Weather in " + cityName, imgHref);
             
             let data = extractForecast(request.response);

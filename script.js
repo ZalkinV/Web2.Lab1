@@ -1,8 +1,14 @@
 "use strict"
 
+window.onload = () => {
+    const form = document.getElementById("input-form");
+    form.addEventListener("submit", onSubmit);
+};
 
-function buttonClick() {
-    let cityName = document.getElementById("input").value;
+function onSubmit(event) {
+    event.preventDefault();
+
+    let cityName = event.currentTarget[0].value;
 
     let request = new XMLHttpRequest();
 

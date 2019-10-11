@@ -62,39 +62,58 @@ function updateTab(newTitle, newImage) {
 
 function extractForecast(response) {
     const ICON_SIZE = 64;
+
+    const {
+        name: cityName,
+        main:
+        {
+            temp: temperature,
+            pressure,
+            humidity,
+        } = {},
+        clouds:
+        {
+            all: clouds,
+        } = {},
+        wind:
+        {
+            speed: windSpeed,
+        } = {},
+    } = response;
+    
     let forecast =
     {
-        cityName: response.name,
-        main: response.weather[0].description,
+        cityName: cityName,
+        description: response.weather[0].description,
         parameters:
             [
                 {
                     name: "Temperature",
-                    value: response.main.temp,
+                    value: temperature,
                     units: "&deg;C",
                     icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/thermometer.png"
                 },
                 {
                     name: "Pressure",
-                    value: response.main.pressure,
+                    value: pressure,
                     units: "hPa",
                     icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/barometer-gauge.png"
                 },
                 {
                     name: "Humidity",
-                    value: response.main.humidity,
+                    value: humidity,
                     units: "%",
                     icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/hygrometer.png"
                 },
                 {
                     name: "Clouds",
-                    value: response.clouds.all,
+                    value: clouds,
                     units: "%",
                     icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/clouds.png"
                 },
                 {
                     name: "Wind speed",
-                    value: response.wind.speed,
+                    value: windSpeed,
                     units: "m/s",
                     icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/wind.png"
                 },

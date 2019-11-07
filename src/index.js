@@ -1,4 +1,4 @@
-import getWeather from "./api";
+import { getWeather, extractForecast } from "./api";
 import { displayWeather, displayError, updateTab } from "./display";
 
 
@@ -28,68 +28,4 @@ function onSubmit(e) {
             });
         },
         error => displayError(error));
-}
-
-
-function extractForecast(response) {
-    const ICON_SIZE = 64;
-
-    const {
-        name: cityName,
-        main:
-        {
-            temp: temperature,
-            pressure,
-            humidity,
-        } = {},
-        clouds:
-        {
-            all: clouds,
-        } = {},
-        wind:
-        {
-            speed: windSpeed,
-        } = {},
-    } = response;
-    
-    let forecast =
-    {
-        cityName: cityName,
-        description: response.weather[0].description,
-        parameters:
-            [
-                {
-                    name: "Temperature",
-                    value: temperature,
-                    units: "&deg;C",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/thermometer.png"
-                },
-                {
-                    name: "Pressure",
-                    value: pressure,
-                    units: "hPa",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/barometer-gauge.png"
-                },
-                {
-                    name: "Humidity",
-                    value: humidity,
-                    units: "%",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/hygrometer.png"
-                },
-                {
-                    name: "Clouds",
-                    value: clouds,
-                    units: "%",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/clouds.png"
-                },
-                {
-                    name: "Wind speed",
-                    value: windSpeed,
-                    units: "m/s",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/wind.png"
-                },
-            ],
-    };
-
-    return forecast;
 }

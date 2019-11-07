@@ -3,6 +3,10 @@ import weatherTemplate from "handlebars-loader!../templates/weather.hbs";
 import errorTemplate from "handlebars-loader!../templates/error.hbs";
 
 
+const WEATHER_DIV = document.getElementById("weather-container");
+const ERROR_DIV = document.getElementById("error-container");
+
+
 window.onload = () => {
     const form = document.getElementById("input-form");
     form.addEventListener("submit", onSubmit);
@@ -17,8 +21,8 @@ function onSubmit(e) {
             response.json()
             .then(json => {
                 if (response.ok) {
-                    const data = extractForecast(json);
-                    displayWeather(data);
+                    const forecast = extractForecast(json);
+                    displayWeather(forecast);
 
                     const cityName = json.name;
                     const imgHref = "https://openweathermap.org/img/wn/" + json.weather[0].icon + ".png";
@@ -32,18 +36,18 @@ function onSubmit(e) {
 }
 
 
-function displayWeather(forecast) {
-    const weatherHtml = weatherTemplate(forecast);
+function displayWeather(weather) {
+    const weatherHtml = weatherTemplate(weather);
 
-    document.getElementById("error-container").innerHTML = "";
-    document.getElementById("weather-container").innerHTML = weatherHtml;
+    ERROR_DIV.innerHTML = "";
+    WEATHER_DIV.innerHTML = weatherHtml;
 }
 
 function displayError(message) {
     const errorHtml = errorTemplate({ message });
 
-    document.getElementById("error-container").innerHTML = errorHtml;
-    document.getElementById("weather-container").innerHTML = "";
+    ERROR_DIV.innerHTML = errorHtml;
+    WEATHER_DIV.innerHTML = "";
 }
 
 function updateTab(newTitle, newImage) {

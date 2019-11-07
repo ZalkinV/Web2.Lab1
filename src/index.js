@@ -1,4 +1,6 @@
 import getWeather from "./api";
+import weatherTemplate from "handlebars-loader!../templates/weather.hbs";
+import errorTemplate from "handlebars-loader!../templates/error.hbs";
 
 
 window.onload = () => {
@@ -31,25 +33,16 @@ function onSubmit(e) {
 
 
 function displayWeather(forecast) {
-    let source = document.getElementById("weather-template").innerHTML;
-    let template = Handlebars.compile(source);
+    const weatherHtml = weatherTemplate(forecast);
 
-    let html = template(forecast);
     document.getElementById("error-container").innerHTML = "";
-    document.getElementById("weather-container").innerHTML = html;
+    document.getElementById("weather-container").innerHTML = weatherHtml;
 }
 
 function displayError(message) {
-    let source = document.getElementById("error-template").innerHTML;
-    let template = Handlebars.compile(source);
+    const errorHtml = errorTemplate({ message });
 
-    let context =
-    {
-        message : message
-    };
-    let html = template(context);
-
-    document.getElementById("error-container").innerHTML = html;
+    document.getElementById("error-container").innerHTML = errorHtml;
     document.getElementById("weather-container").innerHTML = "";
 }
 

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ZalkinV/Web2.Lab1#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "handlebars": "^4.5.1",
     "handlebars-loader": "^1.7.1",
     "mocha": "^6.2.2",

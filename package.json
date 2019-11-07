@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ZalkinV/Web2.Lab1#readme",
   "devDependencies": {
+    "handlebars": "^4.5.1",
     "handlebars-loader": "^1.7.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",

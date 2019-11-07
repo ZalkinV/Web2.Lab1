@@ -1,40 +1,32 @@
-"use strict"
+import getWeather from "./api";
+
 
 window.onload = () => {
     const form = document.getElementById("input-form");
     form.addEventListener("submit", onSubmit);
 };
 
-function onSubmit(event) {
-    event.preventDefault();
+function onSubmit(e) {
+    e.preventDefault();
 
-    let cityName = event.currentTarget[0].value;
+    const inputCityName = e.currentTarget.elements.input.value;
+    getWeather(inputCityName)
+        .then(response => {
+            response.json()
+            .then(json => {
+                if (response.ok) {
+                    const data = extractForecast(json);
+                    displayWeather(data);
 
-    let request = new XMLHttpRequest();
-
-    let requestText = "https://api.openweathermap.org/data/2.5/weather" +
-        "?q=" + cityName +
-        "&appid=7825ce4ffa896c5019e53087c858568a" +
-        "&units=metric" +
-        "&lang=en";
-    request.open("GET", requestText);
-    request.responseType = "json";
-
-    request.onload = function () {
-        if (request.status == 200) {
-            let cityName = request.response.name;
-            let imgHref = "https://openweathermap.org/img/wn/" + request.response.weather[0].icon + ".png";
-            updateTab("Weather in " + cityName, imgHref);
-            
-            let data = extractForecast(request.response);
-            displayWeather(data);
-        }
-        else {
-            displayError(request.response.message);
-        }
-    }
-
-    request.send();
+                    const cityName = json.name;
+                    const imgHref = "https://openweathermap.org/img/wn/" + json.weather[0].icon + ".png";
+                    updateTab("Weather in " + cityName, imgHref);
+                } else {
+                    displayError(json.message);
+                }
+            });
+        },
+        error => displayError(error));
 }
 
 

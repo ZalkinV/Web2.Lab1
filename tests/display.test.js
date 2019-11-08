@@ -2,11 +2,11 @@ const assert = require("chai").assert;
 
 
 describe("Display", function() {
-    it("true", function() {
+    it("isOk", function() {
         assert.isOk(true);
     });
 
-    it("false", function() {
+    it("isAbove", function() {
         assert.isAbove(1, 0);
     });
 });

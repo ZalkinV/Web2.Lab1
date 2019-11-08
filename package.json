@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack-dev-server --mode=development",
-    "test": "mocha ./tests"
+    "test": "mocha ./tests --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/ZalkinV/Web2.Lab1#readme",
   "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
     "chai": "^4.2.0",
     "handlebars": "^4.5.1",
     "handlebars-loader": "^1.7.1",

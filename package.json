@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production --output=build/main.js",
+    "deploy": "gh-pages -d build",
     "start": "webpack-dev-server --mode=development",
     "test": "mocha ./tests --require @babel/register"
   },
@@ -17,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/ZalkinV/Web2.Lab1/issues"
   },
-  "homepage": "https://github.com/ZalkinV/Web2.Lab1#readme",
+  "homepage": "https://zalkinv.github.io/Web2.Lab1",
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",

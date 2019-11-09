@@ -48,7 +48,25 @@ describe("api", function() {
             "cod": 200
         };
 
-        it("forecast should contain 5 parameters", function() {
+        it("forecast should contains property 'cityName'", function() {
+            const forecast = extractForecast(JSON);
+
+            assert.property(forecast, "cityName");
+        });
+
+        it("forecast should contains property 'description'", function() {
+            const forecast = extractForecast(JSON);
+
+            assert.property(forecast, "description");
+        });
+
+        it("forecast should contains array 'parameters'", function() {
+            const forecast = extractForecast(JSON);
+
+            assert.property(forecast, "parameters");
+        });
+
+        it("forecast's array 'parameters' should contain 5 elements", function() {
             let parametersLength = 5;
 
             const forecast = extractForecast(JSON);

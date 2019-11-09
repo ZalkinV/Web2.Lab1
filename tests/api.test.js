@@ -48,6 +48,14 @@ describe("api", function() {
             "cod": 200
         };
 
+        it("forecast should contain 5 parameters", function() {
+            let parametersLength = 5;
+
+            const forecast = extractForecast(JSON);
+
+            assert.lengthOf(forecast.parameters, parametersLength);
+        });
+
         it("json shoud be parsed to forecast", function() {
             const ICON_SIZE = 64;
             let expectedForecast = {

@@ -74,6 +74,17 @@ describe("api", function() {
             assert.lengthOf(forecast.parameters, parametersLength);
         });
 
+        it("each forecast's parameter should contain fields: 'name', 'value', 'units', 'icon'", function() {
+            const forecast = extractForecast(JSON);
+            
+            forecast.parameters.forEach(parameter => {
+                assert.property(parameter, "name");
+                assert.property(parameter, "value");
+                assert.property(parameter, "units");
+                assert.property(parameter, "icon");
+            });
+        });
+
         it("json shoud be parsed to forecast", function() {
             const ICON_SIZE = 64;
             let expectedForecast = {

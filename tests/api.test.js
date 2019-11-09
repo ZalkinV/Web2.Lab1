@@ -3,55 +3,93 @@ import { assert } from "chai";
 import { extractForecast } from "../src/api";
 
 
-describe("API", function() {
+describe("api", function() {
     describe("extractForecast", function() {
         const JSON = {
             "coord": {
-                "lon": 120.99,
-                "lat": 14.64
+                "lon": 44.68,
+                "lat": 43.02
             },
             "weather": [
                 {
-                    "id": 803,
+                    "id": 801,
                     "main": "Clouds",
-                    "description": "broken clouds",
-                    "icon": "04d"
+                    "description": "few clouds",
+                    "icon": "02n"
                 }
             ],
             "base": "stations",
             "main": {
-                "temp": 30,
-                "pressure": 1007,
-                "humidity": 74,
-                "temp_min": 30,
-                "temp_max": 30
+                "temp": 8.93,
+                "pressure": 1023,
+                "humidity": 66,
+                "temp_min": 8.89,
+                "temp_max": 9
             },
             "visibility": 10000,
             "wind": {
-                "speed": 2.1,
-                "deg": 120
+                "speed": 4,
+                "deg": 100
             },
             "clouds": {
-                "all": 75
+                "all": 20
             },
-            "dt": 1573201270,
+            "dt": 1573312299,
             "sys": {
                 "type": 1,
-                "id": 8160,
-                "country": "PH",
-                "sunrise": 1573163627,
-                "sunset": 1573205143
+                "id": 8969,
+                "country": "RU",
+                "sunrise": 1573271122,
+                "sunset": 1573307090
             },
-            "timezone": 28800,
-            "id": 1692193,
-            "name": "123",
+            "timezone": 10800,
+            "id": 473249,
+            "name": "Vladikavkaz",
             "cod": 200
         };
 
-        it("forecast should contain property cityName", function() {
-          const forecast = extractForecast(JSON);
+        it("json shoud be parsed to forecast", function() {
+            const ICON_SIZE = 64;
+            let expectedForecast = {
+                cityName: JSON.name,
+                description: JSON.weather[0].description,
+                parameters: [
+                    {
+                        value: JSON.main.temp,
+                        name: "Temperature",
+                        units: "&deg;C",
+                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/thermometer.png`
+                    },
+                    {
+                        value: JSON.main.pressure,
+                        name: "Pressure",
+                        units: "hPa",
+                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/barometer-gauge.png`
+                    },
+                    {
+                        value: JSON.main.humidity,
+                        name: "Humidity",
+                        units: "%",
+                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/hygrometer.png`
+                    },
+                    {
+                        value: JSON.clouds.all,
+                        name: "Clouds",
+                        units: "%",
+                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/clouds.png`
+                    },
+                    {
+                        value: JSON.wind.speed,
+                        name: "Wind speed",
+                        units: "m/s",
+                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/wind.png`,
+                    },
+                ]
+            };
 
-          assert.property(forecast, "cityName");
+            const actualForecast = extractForecast(JSON);
+
+            assert.deepEqual(actualForecast, expectedForecast);
         });
     });
 });

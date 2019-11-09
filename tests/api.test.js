@@ -74,7 +74,7 @@ describe("api", function() {
             assert.lengthOf(forecast.parameters, parametersLength);
         });
 
-        it("each forecast's parameter should contain fields: 'name', 'value', 'units', 'icon'", function() {
+        it("each forecast's parameter should contains fields: 'name', 'value', 'units', 'icon'", function() {
             const forecast = extractForecast(JSON);
             
             forecast.parameters.forEach(parameter => {
@@ -82,6 +82,14 @@ describe("api", function() {
                 assert.property(parameter, "value");
                 assert.property(parameter, "units");
                 assert.property(parameter, "icon");
+            });
+        });
+
+        it("each forecast's parameter 'icon' propety should be the link to icon at https://img.icons8.com", function() {
+            const forecast = extractForecast(JSON);
+
+            forecast.parameters.forEach(parameter => {
+                assert.match(parameter.icon, /^http(s|):\/\/img\.icons8\.com/)
             });
         });
 

@@ -37,31 +37,31 @@ export function extractForecast(json) {
                     name: "Temperature",
                     value: temperature,
                     units: "&deg;C",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/thermometer.png"
+                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/thermometer.png`
                 },
                 {
                     name: "Pressure",
                     value: pressure,
                     units: "hPa",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/barometer-gauge.png"
+                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/barometer-gauge.png`
                 },
                 {
                     name: "Humidity",
                     value: humidity,
                     units: "%",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/hygrometer.png"
+                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/hygrometer.png`
                 },
                 {
                     name: "Clouds",
                     value: clouds,
                     units: "%",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/clouds.png"
+                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/clouds.png`
                 },
                 {
                     name: "Wind speed",
                     value: windSpeed,
                     units: "m/s",
-                    icon : "https://img.icons8.com/color/" + ICON_SIZE + "/000000/wind.png"
+                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/wind.png`
                 },
             ],
     };

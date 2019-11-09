@@ -52,18 +52,21 @@ describe("api", function() {
             const forecast = extractForecast(JSON);
 
             assert.property(forecast, "cityName");
+            assert.isString(forecast.cityName, "cityName type");
         });
 
         it("forecast should contains property 'description'", function() {
             const forecast = extractForecast(JSON);
 
             assert.property(forecast, "description");
+            assert.isString(forecast.description, "description type");
         });
 
         it("forecast should contains array 'parameters'", function() {
             const forecast = extractForecast(JSON);
 
             assert.property(forecast, "parameters");
+            assert.isArray(forecast.parameters);
         });
 
         it("forecast's array 'parameters' should contain 5 elements", function() {
@@ -71,6 +74,7 @@ describe("api", function() {
 
             const forecast = extractForecast(JSON);
 
+            assert.isArray(forecast.parameters);
             assert.lengthOf(forecast.parameters, parametersLength);
         });
 

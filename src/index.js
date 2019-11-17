@@ -7,25 +7,20 @@ window.onload = () => {
     form.addEventListener("submit", onSubmit);
 };
 
-function onSubmit(e) {
+async function onSubmit(e) {
     e.preventDefault();
 
     const inputCityName = e.currentTarget.elements.input.value;
-    getWeather(inputCityName)
-        .then(response => {
-            response.json()
-            .then(json => {
-                if (response.ok) {
-                    const forecast = extractForecast(json);
-                    displayWeather(forecast);
-
-                    const cityName = json.name;
-                    const imgHref = "https://openweathermap.org/img/wn/" + json.weather[0].icon + ".png";
-                    updateTab("Weather in " + cityName, imgHref);
-                } else {
-                    displayError(json.message);
-                }
-            });
-        },
-        error => displayError(error));
+    try {
+        const weatherResponse = await getWeather(inputCityName);
+        const forecast = extractForecast(weatherResponse);
+        displayWeather(forecast);
+    
+        const cityName = forecast.name;
+        const iconCode = weatherResponse.weather[0].icon;
+        const imgHref = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+        updateTab("Weather in " + cityName, imgHref);
+    } catch (error) {
+        displayError(error.message);
+    }
 }

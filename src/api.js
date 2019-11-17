@@ -1,6 +1,10 @@
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_BASE_PARAMETERS = "&appid=7825ce4ffa896c5019e53087c858568a&units=metric&lang=en";
 
+const ICON_SIZE = 64;
+const PARAMETERS_ICONS_URL = `https://img.icons8.com/color/${ICON_SIZE}`;
+
+
 export async function getWeather(cityName) {
     const url = `${API_BASE_URL}?q=${cityName}${API_BASE_PARAMETERS}`;
     
@@ -13,8 +17,6 @@ export async function getWeather(cityName) {
 }
 
 export function extractForecast(json) {
-    const ICON_SIZE = 64;
-
     const {
         name: cityName,
         main:
@@ -43,31 +45,31 @@ export function extractForecast(json) {
                     name: "Temperature",
                     value: temperature,
                     units: "&deg;C",
-                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/thermometer.png`
+                    icon : `${PARAMETERS_ICONS_URL}/thermometer.png`
                 },
                 {
                     name: "Pressure",
                     value: pressure,
                     units: "hPa",
-                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/barometer-gauge.png`
+                    icon : `${PARAMETERS_ICONS_URL}/barometer-gauge.png`
                 },
                 {
                     name: "Humidity",
                     value: humidity,
                     units: "%",
-                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/hygrometer.png`
+                    icon : `${PARAMETERS_ICONS_URL}/hygrometer.png`
                 },
                 {
                     name: "Clouds",
                     value: clouds,
                     units: "%",
-                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/clouds.png`
+                    icon : `${PARAMETERS_ICONS_URL}/clouds.png`
                 },
                 {
                     name: "Wind speed",
                     value: windSpeed,
                     units: "m/s",
-                    icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/wind.png`
+                    icon : `${PARAMETERS_ICONS_URL}/wind.png`
                 },
             ],
     };

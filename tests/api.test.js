@@ -99,6 +99,8 @@ describe("api", function() {
 
         it("json shoud be parsed to forecast", function() {
             const ICON_SIZE = 64;
+            const ICON_URL = `https://img.icons8.com/color/${ICON_SIZE}`;
+            
             let expectedForecast = {
                 cityName: JSON.name,
                 description: JSON.weather[0].description,
@@ -107,31 +109,31 @@ describe("api", function() {
                         value: JSON.main.temp,
                         name: "Temperature",
                         units: "&deg;C",
-                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/thermometer.png`
+                        icon : `${ICON_URL}/thermometer.png`
                     },
                     {
                         value: JSON.main.pressure,
                         name: "Pressure",
                         units: "hPa",
-                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/barometer-gauge.png`
+                        icon : `${ICON_URL}/barometer-gauge.png`
                     },
                     {
                         value: JSON.main.humidity,
                         name: "Humidity",
                         units: "%",
-                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/hygrometer.png`
+                        icon : `${ICON_URL}/hygrometer.png`
                     },
                     {
                         value: JSON.clouds.all,
                         name: "Clouds",
                         units: "%",
-                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/clouds.png`
+                        icon : `${ICON_URL}/clouds.png`
                     },
                     {
                         value: JSON.wind.speed,
                         name: "Wind speed",
                         units: "m/s",
-                        icon : `https://img.icons8.com/color/${ICON_SIZE}/000000/wind.png`,
+                        icon : `${ICON_URL}/wind.png`,
                     },
                 ]
             };

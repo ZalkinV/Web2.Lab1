@@ -4,7 +4,9 @@ import { extractForecast } from "../src/api";
 
 
 describe("api", function() {
+    
     describe("extractForecast", function() {
+        
         const JSON = {
             "coord": {
                 "lon": 44.68,
@@ -48,6 +50,7 @@ describe("api", function() {
             "cod": 200
         };
 
+
         it("forecast should contains property 'cityName'", function() {
             const forecast = extractForecast(JSON);
 
@@ -60,6 +63,13 @@ describe("api", function() {
 
             assert.property(forecast, "description");
             assert.isString(forecast.description, "description type");
+        });
+
+        it("forecast should contains property 'icon'", function() {
+            const forecast = extractForecast(JSON);
+
+            assert.property(forecast, "icon");
+            assert.isString(forecast.icon, "icon type");
         });
 
         it("forecast should contains array 'parameters'", function() {
@@ -104,6 +114,7 @@ describe("api", function() {
             let expectedForecast = {
                 cityName: JSON.name,
                 description: JSON.weather[0].description,
+                icon: "https://openweathermap.org/img/wn/02n.png",
                 parameters: [
                     {
                         value: JSON.main.temp,
@@ -142,5 +153,7 @@ describe("api", function() {
 
             assert.deepEqual(actualForecast, expectedForecast);
         });
+
     });
+
 });

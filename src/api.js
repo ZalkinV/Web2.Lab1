@@ -1,6 +1,8 @@
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_BASE_PARAMETERS = "&appid=7825ce4ffa896c5019e53087c858568a&units=metric&lang=en";
 
+const WEATHER_ICON_URL = "https://openweathermap.org/img/wn";
+
 const ICON_SIZE = 64;
 const PARAMETERS_ICONS_URL = `https://img.icons8.com/color/${ICON_SIZE}`;
 
@@ -16,9 +18,10 @@ export async function getWeather(cityName) {
     return weatherJSON;
 }
 
-export function extractForecast(json) {
+export function extractForecast(apiResponse) {
     const {
         name: cityName,
+        weather: [{ icon: iconCode, description }],
         main:
         {
             temp: temperature,
@@ -33,12 +36,13 @@ export function extractForecast(json) {
         {
             speed: windSpeed,
         } = {},
-    } = json;
+    } = apiResponse;
     
     let forecast =
     {
         cityName: cityName,
-        description: json.weather[0].description,
+        description: description,
+        icon: `${WEATHER_ICON_URL}/${iconCode}.png`,
         parameters:
             [
                 {

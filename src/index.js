@@ -15,11 +15,7 @@ async function onSubmit(e) {
         const weatherResponse = await getWeather(inputCityName);
         const forecast = extractForecast(weatherResponse);
         displayWeather(forecast);
-    
-        const cityName = forecast.name;
-        const iconCode = weatherResponse.weather[0].icon;
-        const imgHref = "https://openweathermap.org/img/wn/" + iconCode + ".png";
-        updateTab("Weather in " + cityName, imgHref);
+        updateTab("Weather in " + forecast.name, forecast.icon);
     } catch (error) {
         displayError(error.message);
     }

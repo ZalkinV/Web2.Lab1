@@ -7,7 +7,7 @@
     "build": "webpack --mode=production --output=build/main.js",
     "deploy": "gh-pages -d build",
     "start": "webpack-dev-server --mode=development",
-    "test": "mocha ./tests --require @babel/register"
+    "test": "mocha ./tests --require @babel/register --require @babel/polyfill"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://zalkinv.github.io/Web2.Lab1",
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
     "chai": "^4.2.0",

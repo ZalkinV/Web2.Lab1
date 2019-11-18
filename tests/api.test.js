@@ -1,4 +1,5 @@
 import { assert } from "chai";
+import sinon from "sinon";
 
 import { extractForecast, getWeather } from "../src/api";
 
@@ -165,6 +166,15 @@ describe("api", function() {
 
         this.afterAll(() => {
             delete global.window;
+        });
+
+        let stubedFetch;
+        this.beforeEach(() => {
+            stubedFetch = sinon.stub(window, "fetch");
+        });
+
+        this.afterEach(() => {
+            stubedFetch.restore();
         });
         
         it("should call fetch and return resolved promise", () => {

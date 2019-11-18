@@ -158,8 +158,18 @@ describe("api", function() {
 
 
     describe("getWeather", () => {
+
+        this.beforeAll(() => {
+            global.window = {fetch: () => null};
+        });
+
+        this.afterAll(() => {
+            delete global.window;
+        });
         
         it("should call fetch and return resolved promise", () => {
+            console.log(global.window);
+            
             global.fetch = () => Promise.resolve({ok: true, json: () => Promise.resolve("faked json data")});
             getWeather("test")
                 .then((response) => assert.equal("faked json data", response));

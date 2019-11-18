@@ -1,6 +1,6 @@
 import { assert } from "chai";
 
-import { extractForecast } from "../src/api";
+import { extractForecast, getWeather } from "../src/api";
 
 
 describe("api", function() {
@@ -152,6 +152,17 @@ describe("api", function() {
             const actualForecast = extractForecast(JSON);
 
             assert.deepEqual(actualForecast, expectedForecast);
+        });
+
+    });
+
+
+    describe("getWeather", () => {
+        
+        it("should call fetch and return resolved promise", () => {
+            global.fetch = () => Promise.resolve({ok: true, json: () => Promise.resolve("faked json data")});
+            getWeather("test")
+                .then((response) => assert.equal("faked json data", response));
         });
 
     });

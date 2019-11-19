@@ -171,12 +171,11 @@ describe("api", function() {
         let stubbedFetch;
         beforeEach(() => {
             stubbedFetch = sinon.stub(global, "fetch");
-            stubbedFetch.returns(
-                Promise.resolve({
-                        ok: true,
-                        json: () => Promise.resolve("default json content")
-                    })
-                );
+            stubbedFetch
+                .resolves({
+                    ok: true,
+                    json: () => Promise.resolve("default json content")
+                });
         });
 
         afterEach(() => {
@@ -185,18 +184,17 @@ describe("api", function() {
 
         it("should call fetch once", async () => {
             await getWeather("cityName");
-            
+
             assert.equal(stubbedFetch.callCount, 1);
         });
         
         it("should call fetch and return resolved promise", async () => {
             const expectedJsonContent = "faked json data";
-            stubbedFetch.returns(
-                Promise.resolve({
-                        ok: true,
-                        json: () => Promise.resolve(expectedJsonContent)
-                    })
-                );
+            stubbedFetch
+                .resolves({
+                    ok: true,
+                    json: () => Promise.resolve(expectedJsonContent)
+                });
 
             const response = await getWeather("cityName");
             

@@ -168,7 +168,7 @@ describe("api", function() {
             delete global.fetch;
         });
 
-        let stubbedFetch;
+        let stubbedFetch = sinon.stub();
         beforeEach(() => {
             stubbedFetch = sinon.stub(global, "fetch");
             stubbedFetch

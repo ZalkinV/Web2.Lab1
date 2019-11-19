@@ -208,7 +208,9 @@ describe("api", function() {
 
             try {
                 await getWeather("cityName");
+                assert.isTrue(false, "Error wasn't thrown")
             } catch (error) {
+                assert.typeOf(error, "Error");
                 assert.equal(error.message, expectedErrorMessage);
             }
         });
@@ -225,6 +227,7 @@ describe("api", function() {
 
             try {
                 await getWeather("cityName");
+                assert.isTrue(false, "Error wasn't thrown")
             } catch (error) {
                 assert.typeOf(error, "Error");
                 assert.equal(error.message, expectedErrorMessage);

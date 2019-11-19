@@ -160,21 +160,21 @@ describe("api", function() {
 
     describe("getWeather", () => {
 
-        this.beforeAll(() => {
-            global.window = {fetch: () => null};
+        before(() => {
+            global.fetch = () => null;
+        });
+        
+        after(() => {
+            delete global.fetch;
         });
 
-        this.afterAll(() => {
-            delete global.window;
+        let stubbedFetch;
+        beforeEach(() => {
+            stubbedFetch = sinon.stub(global, "fetch");
         });
 
-        let stubedFetch;
-        this.beforeEach(() => {
-            stubedFetch = sinon.stub(window, "fetch");
-        });
-
-        this.afterEach(() => {
-            stubedFetch.restore();
+        afterEach(() => {
+            stubbedFetch.restore();
         });
         
         it("should call fetch and return resolved promise", async () => {

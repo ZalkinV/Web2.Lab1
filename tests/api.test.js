@@ -201,6 +201,17 @@ describe("api", function() {
             assert.equal(expectedJsonContent, response);
         });
 
+        it("should call fetch with url with cityName", async () => {
+            const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+            const API_BASE_PARAMETERS = "&appid=7825ce4ffa896c5019e53087c858568a&units=metric&lang=en";
+            const cityName = "testCityName";
+            const expectedUrl = `${API_BASE_URL}?q=${cityName}${API_BASE_PARAMETERS}`;
+
+            await getWeather(cityName);
+
+            stubbedFetch.calledWithExactly(expectedUrl);
+        });
+
         it("should call fetch and return internet connection error", async () => {
             const expectedErrorMessage = "fake internet error message";
             stubbedFetch

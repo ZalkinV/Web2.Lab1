@@ -177,12 +177,13 @@ describe("api", function() {
             stubedFetch.restore();
         });
         
-        it("should call fetch and return resolved promise", () => {
-            console.log(global.window);
+        it("should call fetch and return resolved promise", async () => {
+            const expectedJsonContent = "faked json data";
+            global.fetch = () => Promise.resolve({ok: true, json: () => Promise.resolve(expectedJsonContent)});
             
-            global.fetch = () => Promise.resolve({ok: true, json: () => Promise.resolve("faked json data")});
-            getWeather("test")
-                .then((response) => assert.equal("faked json data", response));
+            const response = await getWeather("cityName");
+            
+            assert.equal(expectedJsonContent, response);
         });
 
     });

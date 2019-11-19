@@ -189,7 +189,7 @@ describe("api", function() {
         });
         
         it("should call fetch and return resolved promise", async () => {
-            const expectedJsonContent = "faked json data";
+            const expectedJsonContent = "fake json data";
             stubbedFetch
                 .resolves({
                     ok: true,
@@ -199,6 +199,18 @@ describe("api", function() {
             const response = await getWeather("cityName");
             
             assert.equal(expectedJsonContent, response);
+        });
+
+        it("should call fetch and return internet connection error", async () => {
+            const expectedErrorMessage = "fake internet error message";
+            stubbedFetch
+                .rejects(new Error(expectedErrorMessage));
+            
+            try {
+                await getWeather("cityName");
+            } catch (error) {
+                assert.equal(error.message, expectedErrorMessage);
+            }
         });
 
     });

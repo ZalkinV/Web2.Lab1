@@ -171,10 +171,22 @@ describe("api", function() {
         let stubbedFetch;
         beforeEach(() => {
             stubbedFetch = sinon.stub(global, "fetch");
+            stubbedFetch.returns(
+                Promise.resolve({
+                        ok: true,
+                        json: () => Promise.resolve("default json content")
+                    })
+                );
         });
 
         afterEach(() => {
             stubbedFetch.restore();
+        });
+
+        it("should call fetch once", async () => {
+            await getWeather("cityName");
+            
+            assert.equal(stubbedFetch.callCount, 1);
         });
         
         it("should call fetch and return resolved promise", async () => {

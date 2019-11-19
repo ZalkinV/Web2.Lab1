@@ -7,7 +7,7 @@ import { extractForecast, getWeather } from "../src/api";
 describe("api", function() {
     
     describe("extractForecast", function() {
-        
+
         const JSON = {
             "coord": {
                 "lon": 44.68,
@@ -205,10 +205,28 @@ describe("api", function() {
             const expectedErrorMessage = "fake internet error message";
             stubbedFetch
                 .rejects(new Error(expectedErrorMessage));
-            
+
             try {
                 await getWeather("cityName");
             } catch (error) {
+                assert.equal(error.message, expectedErrorMessage);
+            }
+        });
+
+        it("should call fetch and return not found error in json()", async () => {
+            const expectedErrorMessage = "fake not found message";
+            stubbedFetch
+                .resolves({
+                    ok: false,
+                    json: () => Promise.resolve({
+                        message: expectedErrorMessage
+                    })
+                });
+
+            try {
+                await getWeather("cityName");
+            } catch (error) {
+                assert.typeOf(error, "Error");
                 assert.equal(error.message, expectedErrorMessage);
             }
         });

@@ -185,7 +185,7 @@ describe("api", function() {
         it("should call fetch once", async () => {
             await getWeather("cityName");
 
-            assert.equal(stubbedFetch.callCount, 1);
+            sinon.assert.calledOnce(stubbedFetch);
         });
         
         it("should call fetch and return resolved promise", async () => {

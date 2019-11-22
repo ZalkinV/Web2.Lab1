@@ -17,6 +17,7 @@ async function onSubmit(e) {
         displayWeather(forecast);
         updateTab("Weather in " + forecast.name, forecast.icon);
     } catch (error) {
+        error.cityName = inputCityName;
         displayWeather(error);
     }
 }
